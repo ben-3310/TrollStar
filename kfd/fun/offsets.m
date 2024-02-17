@@ -276,18 +276,18 @@ void _offsets_init(void) {
         off_p_textvp = 0x548; //ok
         off_p_name = 0x579; //ok
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/proc_ro.h#L59
+        //IDK
         off_p_ro_p_csflags = 0x1c; //nc
         off_p_ro_p_ucred = 0x20; //ok
         off_p_ro_pr_proc = 0; //nc
         off_p_ro_pr_task = 0x8; //nc
         off_p_ro_t_flags_ro = 0x78; //nc
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/ucred.h#L91
+        //IDK
         off_u_cr_label = 0x78; //ok
         off_u_cr_posix = 0x18; //ok
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/ucred.h#L100
+        //IDK
         off_cr_uid = 0; //0x18 - 0x18
         off_cr_ruid = 0x4; //nc
         off_cr_svuid = 0x8; //nc
@@ -298,21 +298,21 @@ void _offsets_init(void) {
         off_cr_gmuid = 0x58; //nc
         off_cr_flags = 0x5c; //ok
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/osfmk/kern/task.h#L280
+        //IDK
         off_task_t_flags = 0x3B8; //ok
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/filedesc.h#L138
+        //IDK
         off_fd_ofiles = 0; //nc
-        off_fd_cdir = 0x20; // nc https://github.com/Baw-Appie/KernBypass/blob/69e5ae6baf04d0978358feee57eca8b8bc1382ed/kernel.h#L390
+        off_fd_cdir = 0x20; // nc 
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/file_internal.h#L125
+        //IDK
         off_fp_glob = 0x10; //ok
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/file_internal.h#L179
+        //IDK
         off_fg_data = 0x38; //nc
         off_fg_flag = 0x10; //nc
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/vnode_internal.h#L158
+        //IDK
         off_vnode_v_ncchildren_tqh_first = 0x30;  //ok
         off_vnode_v_iocount = 0x64; //ok
         off_vnode_v_usecount = 0x60; //ok
@@ -328,17 +328,17 @@ void _offsets_init(void) {
         off_vnode_v_writecount = 0xD8;// seems to be changed, idk
         off_vnode_v_type = 0x70;//ok
         
-        //https://github.com/apple-oss-distributions/xnu/blob/main/bsd/sys/mount_internal.h#L108
+        //IDK
         off_mount_mnt_data = 0x11F; //nc
         off_mount_mnt_fsowner = 0x9c0; //nc
         off_mount_mnt_fsgroup = 0x9c4; //nc
         off_mount_mnt_devvp = 0x980; //ok
         off_mount_mnt_flag = 0x70;//ok
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/miscfs/specfs/specdev.h#L77
+        //IDK
         off_specinfo_si_flags = 0x10; //nc
         
-        //https://github.com/apple-oss-distributions/xnu/blob/xnu-8792.41.9/bsd/sys/namei.h#L243
+        //IDK
         off_namecache_nc_vp = 0x50;//idk if it 0x50 or 0x48...
         off_namecache_nc_child_tqe_prev = 0x10; //nc
 
