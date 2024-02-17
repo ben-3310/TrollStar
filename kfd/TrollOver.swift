@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 func processDirectories() {
     let downloadURL = URL(string: "https://github.com/opa334/TrollStore/releases/latest/download/PersistenceHelper_Embedded")!

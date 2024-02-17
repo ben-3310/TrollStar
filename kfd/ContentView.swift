@@ -101,6 +101,8 @@ struct ContentView: View {
                                 VStack {
                                     Text("Made by Little34306 and straight-tamago")
                                         .font(.caption)
+                                    Text("This version supported iOS 17.0 beta 1 - 4")
+                                        .font(.caption)
                                     Text("\nv" + (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String))
                                         .font(.caption)
                                 }
@@ -113,7 +115,7 @@ struct ContentView: View {
                 }
 
             }
-            .navigationBarTitle(Text("TrollStore Installer Helper"), displayMode: .inline)
+            .navigationBarTitle(Text("TrollStore Installer Helper 17.0"), displayMode: .inline)
         }
     }
 }

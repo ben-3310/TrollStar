@@ -20,9 +20,6 @@ uint64_t getProc(pid_t pid) {
             return proc;
         }
         proc = kread64(proc + off_p_list_le_prev);
-        if(!proc) {
-            return -1;
-        }
     }
     
     return 0;
@@ -40,18 +37,13 @@ uint64_t getProcByName(char* nm) {
             return proc;
         }
         proc = kread64(proc + off_p_list_le_prev);
-        if(!proc) {
-            return -1;
-        }
     }
     
     return 0;
 }
 
 int getPidByName(char* nm) {
-    uint64_t proc = getProcByName(nm);
-    if(proc == -1) return -1;
-    return kread32(proc + off_p_pid);
+    return kread32(getProcByName(nm) + off_p_pid);
 }
 
 int funProc(uint64_t proc) {

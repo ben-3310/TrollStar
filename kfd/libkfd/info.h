@@ -89,43 +89,18 @@ void info_init(struct kfd* kfd)
     usize size2 = sizeof(kern_version);
     assert_bsd(sysctlbyname("kern.version", &kern_version, &size2, NULL, 0));
     print_string(kern_version);
-    
-    kfd->info.env.vid = 0;
-    
-    //set offset from static patchfinder
-//    kern_versions[kfd->info.env.vid].kernelcache__cdevsw = off_cdevsw;
-//    kern_versions[kfd->info.env.vid].kernelcache__gPhysBase = off_gPhysBase;
-//    kern_versions[kfd->info.env.vid].kernelcache__gPhysSize = off_gPhysSize;
-//    kern_versions[kfd->info.env.vid].kernelcache__gVirtBase = off_gVirtBase;
-//    kern_versions[kfd->info.env.vid].kernelcache__perfmon_dev_open = off_perfmon_dev_open;
-//    kern_versions[kfd->info.env.vid].kernelcache__perfmon_devices = off_perfmon_devices;
-//    kern_versions[kfd->info.env.vid].kernelcache__ptov_table = off_ptov_table;
-//    kern_versions[kfd->info.env.vid].kernelcache__vn_kqfilter = off_vn_kqfilter;
-//    kern_versions[kfd->info.env.vid].proc__object_size = off_proc_object_size;
-    
-    //T8120(A16), T8103(M1), T8112(M2): t1sz_boot = 17;
-    //others: t1sz_boot = 25;
-    //Source: https://www.reddit.com/r/jailbreak/comments/15b9l7n/comment/jtssz14/?utm_source=share&utm_medium=web2x&context=3
-    if(strstr(get_kernversion(), "T8120") != NULL || strstr(get_kernversion(), "T8103") != NULL || strstr(get_kernversion(), "T8112") != NULL)
-        t1sz_boot = 17;
-    else
-        t1sz_boot = 25;
-    
-    arm64_link_addr = get_vm_kernel_link_addr();
-    
-    print_u64(kfd->info.env.vid);
 
-//    const u64 number_of_kern_versions = sizeof(kern_versions) / sizeof(kern_versions[0]);
-//    for (u64 i = 0; i < number_of_kern_versions; i++) {
-//        const char* current_kern_version = kern_versions[i].kern_version;
-//        if (!memcmp(kern_version, current_kern_version, strlen(current_kern_version))) {
-//            kfd->info.env.vid = i;
-//            print_u64(kfd->info.env.vid);
-//            return;
-//        }
-//    }
+    const u64 number_of_kern_versions = sizeof(kern_versions) / sizeof(kern_versions[0]);
+    for (u64 i = 0; i < number_of_kern_versions; i++) {
+        const char* current_kern_version = kern_versions[i].kern_version;
+        if (!memcmp(kern_version, current_kern_version, strlen(current_kern_version))) {
+            kfd->info.env.vid = i;
+            print_u64(kfd->info.env.vid);
+            return;
+        }
+    }
 
-//    assert_false("unsupported osversion");
+    assert_false("unsupported osversion");
 }
 
 void info_run(struct kfd* kfd)

@@ -6,13 +6,16 @@
 //
 
 #include <stdio.h>
-#include <Foundation/Foundation.h>
-#include <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
+//File Manager Stuff
 uint64_t createFolderAndRedirectR(NSString *path, NSString *mntPath);
-int VarMobileWriteTest(void);
-int VarMobileRemoveTest(void);
-int VarMobileWriteFolderTest(void);
-int VarMobileRemoveFolderTest(void);
-void HexDump(uint64_t addr, size_t size);
-bool sandbox_escape_can_i_access_file(char* path, int mode);
+NSData* dataFromFile(NSString* directoryPath, NSString* fileName);
+void writeDataToFile(NSData* fileData, NSString* directoryPath, NSString* fileName);
+NSString* removeFile(NSString* directoryPath, NSString* fileName);
+NSString* makeSymlink(NSString* directoryPath, NSString* fileName, NSString* destinationPath);
+BOOL isFileDeletable(NSString* directoryPath, NSString* fileName);
+NSString* createDirectory(NSString* directoryPath, NSString* fileName);
+NSArray<NSString*>* contentsOfDirectory(NSString* directoryPath);
+NSData* dataFromFileCopy(NSString* directoryPath, NSString* fileName);
+BOOL isFileReadable(NSString* directoryPath, NSString* fileName);
